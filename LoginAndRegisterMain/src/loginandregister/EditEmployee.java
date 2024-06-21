@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 import com.opencsv.CSVWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class EditEmployee extends javax.swing.JFrame {
@@ -23,8 +26,58 @@ public class EditEmployee extends javax.swing.JFrame {
     /**
      * Creates new form EditEmployee
      */
+ //Validation Methods
  
-   
+ //Names
+    private boolean isValidString(String value) {
+        value = value.trim(); 
+        if (value.isEmpty()) {
+            return false; 
+        }
+        String pattern = "^[a-zA-Z\\s]+$";
+        return value.matches(pattern);
+    }
+    //Ignore
+    private boolean isValidBirthday(String birthday) {
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    sdf.setLenient(false);
+
+    try {
+        Date date = sdf.parse(birthday);
+        return true; 
+    } catch (ParseException e) {
+        return false; 
+    }
+}
+       
+     private boolean isValidInteger(String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    } 
+ //Philhealth    
+     private boolean isValidPhilhealthNumber(String value) {
+        String pattern = "^\\d{12}$";
+        return value.matches(pattern);
+}
+   //phonenumber  
+     private boolean isValidPhoneNumber(String phoneNumber) {
+        String pattern = "^\\d{3}-\\d{3}-\\d{3}$";
+        return phoneNumber.matches(pattern);
+}
+     //sss
+     private boolean isValidSssNumber(String value){
+        String pattern = "^\\d{2}-\\d{7}-\\d{1}$";  
+        return value.matches(pattern);
+     }
+     //tin
+     private boolean isValidTin(String value){
+         String pattern = "^\\d{3}-\\d{3}-\\d{3}-\\d{3}$";
+         return value.matches(pattern);
+     }
    
     public EditEmployee(UserAccount userAcc) {
         initComponents();
@@ -97,34 +150,26 @@ public class EditEmployee extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSave))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jLabel4))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel3)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel2)
-                                .addGap(38, 38, 38)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldNewValue, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBoxColumnName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(35, 35, 35))
+                            .addComponent(jTextFieldEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxColumnName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonSave)
+                            .addComponent(jTextFieldNewValue, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,13 +182,13 @@ public class EditEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxColumnName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNewValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldNewValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSave)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,78 +221,160 @@ public class EditEmployee extends javax.swing.JFrame {
        int columnIndex=0;
        
        String selectedItem = (String)jComboBoxColumnName.getSelectedItem();
-
+        String newValue = jTextFieldNewValue.getText();
 
 
 
 
  switch (selectedItem) {
     case "Last Name":
-        columnIndex = 1;
-        break;
+        if (isValidString(newValue)) {
+               columnIndex = 1;
+               } else {
+                       JOptionPane.showMessageDialog(jButtonSave, "Invalid input.\n Please enter valid name ");
+                       return; // Exit the method early if the birthday format is invalid
+               }
+                break;
     case "First Name":
-        columnIndex = 2;
-        break;
-    case "Birthday":
-        columnIndex = 3;
-        break;
+        if (isValidString(newValue)) {
+               columnIndex = 1;
+               } else {
+                       JOptionPane.showMessageDialog(jButtonSave, "Invalid input.\n Please enter valid name ");
+                       return; // Exit the method early if the birthday format is invalid
+               }
+                break;
+   case "Birthday":
+         if (isValidBirthday(newValue)) {
+                columnIndex = 3;
+        } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid birthday format. Please use mm/dd/yy.");
+                return; // Exit the method early if the birthday format is invalid
+        }
+         break;
+         
     case "Address":
         columnIndex = 4;
         break;
     case "Phone Number":
-        columnIndex = 5;
-        break;
+         if (isValidPhoneNumber(newValue)) {
+                columnIndex = 5;
+        } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please format in xxx-xxx-xxx");
+                return; // Exit the method early if the birthday format is invalid
+        }
+         break;
+
     case "SSS #":
-        columnIndex = 6;
+        if (isValidSssNumber(newValue)){
+        columnIndex = 6;}
+        else{ 
+            JOptionPane.showMessageDialog(jButtonSave, "Invalid input\nPlease format as xx-xxxxxxx-x");
+            return;
+        }
         break;
     case "Philhealth #":
-        columnIndex = 7;
-        break;
+         if (isValidPhilhealthNumber(newValue)) {
+                columnIndex = 7;
+            } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please format as xxxxxxxxxxxx (12 digits).");
+                return;
+            }
+            break;
     case "TIN #":
-        columnIndex = 8;
+        if (isValidTin(newValue)){
+            columnIndex = 8;
+        }else{
+           JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please format as xxx-xxx-xxx-xxx.");
+                return; 
+        }
         break;
     case "Pag-ibig #":
         columnIndex = 9;
         break;
-    case "Status":
-        columnIndex = 10;
+  case "Status":
+        if (newValue.equalsIgnoreCase("Regular") || newValue.equalsIgnoreCase("Probationary")) {
+            columnIndex = 10;
+        } else {
+            JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please choose 'Regular' or 'Probationary'.");
+            return;
+        }
         break;
     case "Position":
-       columnIndex = 11;
-        break;
+      if (isValidString(newValue)) {
+               columnIndex = 1;
+               } else {
+                       JOptionPane.showMessageDialog(jButtonSave, "Invalid input.\n Please enter valid string ");
+                       return; // Exit the method early if the birthday format is invalid
+               }
+                break;
     case "Immediate Supervisor":
-        columnIndex = 12;
-        break;
+ if (isValidString(newValue)) {
+               columnIndex = 1;
+               } else {
+                       JOptionPane.showMessageDialog(jButtonSave, "Invalid input.\n Please enter valid name ");
+                       return; // Exit the method early if the birthday format is invalid
+               }
+                break;
     case "Basic Salary":
-        columnIndex = 13;
-        break;
+             if (isValidInteger(newValue)) {
+                columnIndex = 13;
+            } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please enter a valid integer.");
+                return;
+            }
+            break;
     case "Rice Subsidy":
-       columnIndex = 14;
-        break;
+             if (isValidInteger(newValue)) {
+                columnIndex = 14;
+            } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please enter a valid integer.");
+                return;
+            }
+            break;
     case "Phone Allowance":
-       columnIndex = 15;
-        break;
+              if (isValidInteger(newValue)) {
+                columnIndex = 15;
+            } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please enter a valid integer.");
+                return;
+            }
+            break;
     case "Clothing Allowance":
-        columnIndex = 16;
-        break;
+             if (isValidInteger(newValue)) {
+                columnIndex = 16;
+            } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please enter a valid integer.");
+                return;
+            }
+            break;
     case "Gross Semi-monthly Rate":
-        columnIndex = 17;
-        break;
+             if (isValidInteger(newValue)) {
+                columnIndex = 17;
+            } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please enter a valid integer.");
+                return;
+            }
+            break;
     case "Hourly Rate":
-        columnIndex = 18;
-        break;
+             if (isValidInteger(newValue)) {
+                columnIndex = 18;
+            } else {
+                JOptionPane.showMessageDialog(jButtonSave, "Invalid input. Please enter a valid integer.");
+                return;
+            }
+            break;
 }
 
      
        
        
 
-          String newValue = jTextFieldNewValue.getText();
+         
           employeeData[columnIndex]=newValue; 
           JOptionPane.showMessageDialog(jButtonSave, "Updated Succesfully\n Please click the refresh Button to view changes ");
            
       
-       
+   
        
        
        try {
@@ -265,7 +392,7 @@ public class EditEmployee extends javax.swing.JFrame {
           
           
         
-         this.setVisible(false);
+        
 
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
