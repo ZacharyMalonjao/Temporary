@@ -310,101 +310,16 @@ public class AdminPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmpActionPerformed
-String id = JOptionPane.showInputDialog(this, "Enter Employee ID:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (id == null) return; // user cancelled
+     CreateEmployee createEmployee = new CreateEmployee();
+     createEmployee.setVisible(true);
 
-    String lastName = JOptionPane.showInputDialog(this, "Enter Last Name:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (lastName == null) return; // user cancelled
-
-    String firstName = JOptionPane.showInputDialog(this, "Enter First Name:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (firstName == null) return; // user cancelled
-
-    String birthday = JOptionPane.showInputDialog(this, "Enter Birthday (MM/dd/yyyy):", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (birthday == null) return; // user cancelled
-
-    String address = JOptionPane.showInputDialog(this, "Enter Address:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (address == null) return; // user cancelled
-
-    String phoneNumber = JOptionPane.showInputDialog(this, "Enter Phone Number:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (phoneNumber == null) return; // user cancelled
-
-    String sss = JOptionPane.showInputDialog(this, "Enter SSS #:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (sss == null) return; // user cancelled
-
-    String philhealth = JOptionPane.showInputDialog(this, "Enter Philhealth #:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (philhealth == null) return; // user cancelled
-
-    String tin = JOptionPane.showInputDialog(this, "Enter TIN #:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (tin == null) return; // user cancelled
-
-    String pagibig = JOptionPane.showInputDialog(this, "Enter Pag-ibig #:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (pagibig == null) return; // user cancelled
-
-    String status = JOptionPane.showInputDialog(this, "Enter Status:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (status == null) return; // user cancelled
-
-    String position = JOptionPane.showInputDialog(this, "Enter Position:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (position == null) return; // user cancelled
-
-    String supervisor = JOptionPane.showInputDialog(this, "Enter Immediate Supervisor:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (supervisor == null) return; // user cancelled
-
-    String basicSalary = JOptionPane.showInputDialog(this, "Enter Basic Salary:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (basicSalary == null) return; // user cancelled
-
-    String riceSubsidy = JOptionPane.showInputDialog(this, "Enter Rice Subsidy:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (riceSubsidy == null) return; // user cancelled
-
-    String phoneAllowance = JOptionPane.showInputDialog(this, "Enter Phone Allowance:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (phoneAllowance == null) return; // user cancelled
-
-    String clothingAllowance = JOptionPane.showInputDialog(this, "Enter Clothing Allowance:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (clothingAllowance == null) return; // user cancelled
-
-    String grossSemiMonthlyRate = JOptionPane.showInputDialog(this, "Enter Gross Semi-monthly Rate:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (grossSemiMonthlyRate == null) return; // user cancelled
-
-    String hourlyRate = JOptionPane.showInputDialog(this, "Enter Hourly Rate:", "Add Employee", JOptionPane.QUESTION_MESSAGE);
-    if (hourlyRate == null) return; // user cancelled
-
-    String file = "MotorPH.csv";
-    boolean idExists = false;
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-        String line;
-        while ((line = reader.readLine())!= null) {
-            String[] columns = line.split(",");
-            if (columns[0].equals(id)) {
-                idExists = true;
-                break;
-            }
-        }
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    if (idExists) {
-        JOptionPane.showMessageDialog(this, "Error: ID already exists", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
-        out.println(id + "," + lastName + "," + firstName + "," + birthday + "," + address + "," + phoneNumber + "," + sss + "," + philhealth + "," + tin + "," + pagibig + "," + status + "," + position + "," + supervisor + "," + basicSalary + "," + riceSubsidy + "," + phoneAllowance + "," + clothingAllowance + ","+ grossSemiMonthlyRate + "," + hourlyRate);
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    DefaultTableModel model = (DefaultTableModel) jTableDataBase.getModel();
-    model.addRow(new Object[]{id, lastName, firstName, birthday, address, phoneNumber, sss, philhealth, tin, pagibig, status, position, supervisor, basicSalary, riceSubsidy, phoneAllowance, clothingAllowance, grossSemiMonthlyRate, hourlyRate});
-
-    JOptionPane.showMessageDialog(this, "Employee added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_AddEmpActionPerformed
 
     private void jButtonEditRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditRecActionPerformed
         // TODO add your handling code here:
+        
+        
       DefaultTableModel model = (DefaultTableModel) jTableDataBase.getModel();
         int selectedRowIndex = jTableDataBase.getSelectedRow();
        if(selectedRowIndex!=-1)

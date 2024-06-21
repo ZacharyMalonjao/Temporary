@@ -10,39 +10,15 @@ import javax.swing.JOptionPane;
  *
  * @author Claire
  */
-public class EditEmployee extends javax.swing.JFrame {
+public class CreateEmployee extends javax.swing.JFrame {
     private EmployeeCSVReader reader;
     /**
      * Creates new form EmployeeDisplayInformation
      */
-    public EditEmployee(UserAccount userAcc) {
+    public CreateEmployee() {
         initComponents();
         
-        reader = new EmployeeCSVReader("MotorPH.csv");
-        String employeeID = userAcc.getEmployeeID(); //+
-        String[] employeeData = reader.searchEmployee(employeeID); //call the method search Employee from EmployeeCSVReader
-  
-        //Phone Allowance,Clothing Allowance,Gross Semi-monthly Rate,Hourly Rate
-        jTextFieldEmpNum.setText(employeeData[0]);
-        jTextFieldFirstName.setText(employeeData[2]);
-        jTextFieldLastName.setText(employeeData[1]);
-        jTextFieldAddress.setText(employeeData[3]);
-       // jTextFieldAddress.setText(employeeData[4]);
-        jTextFieldPhoneNum.setText(employeeData[5]);
-        jTextFieldSSSNum.setText(employeeData[6]);
-        jTextFieldPhilHealthNum.setText(employeeData[7]);
-        jTextFieldTINNum.setText(employeeData[8]);
-        jTextFieldPagibigNum.setText(employeeData[9]);
-//        jTextFieldStatus.setText(employeeData[10]);
-//        jTextFieldPosition.setText(employeeData[11]);
-//        jTextFieldSupervisor.setText(employeeData[12]);
-        jTextFieldBasicSalary.setText(employeeData[13]);
-        jTextFieldRiceSubsidy.setText(employeeData[14]);
-        jTextFieldPhoneAllowance.setText(employeeData[15]);
-        jTextFieldClothingAllowance.setText(employeeData[16]);
-        jTextFieldGrossSemiMonthly.setText(employeeData[17]);
-        jTextFieldHourlyRate.setText(employeeData[18]);
-
+       //Create employee here 
     }
 
     /**
@@ -61,10 +37,10 @@ public class EditEmployee extends javax.swing.JFrame {
         jTextFieldLastName = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jTextFieldAddress = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTextFieldFirstName = new javax.swing.JTextField();
-        jTextFieldAddress = new javax.swing.JTextField();
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -150,12 +126,11 @@ public class EditEmployee extends javax.swing.JFrame {
         jTextField37 = new javax.swing.JTextField();
         jLabel56 = new javax.swing.JLabel();
         jTextField38 = new javax.swing.JTextField();
-        jLabel57 = new javax.swing.JLabel();
         jTextFieldPagibigNum = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -164,7 +139,7 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Address");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 50, 20));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 50, 20));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Phone Number");
@@ -180,6 +155,7 @@ public class EditEmployee extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Last Name");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 60, 20));
+        jPanel2.add(jTextFieldAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 210, 20));
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Birth Day");
@@ -189,7 +165,6 @@ public class EditEmployee extends javax.swing.JFrame {
         jLabel23.setText("First Name");
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 20));
         jPanel2.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 210, -1));
-        jPanel2.add(jTextFieldAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 210, -1));
         jPanel2.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 110));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 380, 300));
@@ -495,11 +470,11 @@ public class EditEmployee extends javax.swing.JFrame {
         jPanel15.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 160, -1));
 
         jPanel13.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 370, 200));
-
-        jLabel57.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel57.setText("Pag-IBIG Number");
-        jPanel13.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 100, 20));
         jPanel13.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 160, -1));
+
+        jLabel58.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel58.setText("Pag-IBIG Number");
+        jPanel13.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 100, 20));
 
         getContentPane().add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 370, 210));
 
@@ -536,11 +511,12 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
+      
 
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
@@ -635,7 +611,7 @@ public class EditEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
