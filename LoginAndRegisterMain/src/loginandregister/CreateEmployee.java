@@ -18,7 +18,10 @@ public class CreateEmployee extends javax.swing.JFrame {
     public CreateEmployee() {
         initComponents();
         
-       //Create employee here 
+       //Dear future Djanh, magandang practice raw na yung employee number is auto-generated, acc. kay sir
+          //specifically kukunin yung last employee id ng csv tas plus one
+          //also do me a favor and use the address validation sa Validator class
+              //message me for further details
     }
 
     /**
@@ -46,7 +49,6 @@ public class CreateEmployee extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButtonExit = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTextField10 = new javax.swing.JTextField();
@@ -164,6 +166,12 @@ public class CreateEmployee extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("First Name");
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 20));
+
+        jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFirstNameActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 210, -1));
         jPanel2.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 110));
 
@@ -186,16 +194,6 @@ public class CreateEmployee extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Payroll System");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
-
-        jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonExit.setForeground(new java.awt.Color(255, 0, 51));
-        jButtonExit.setText("Exit");
-        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExitActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 70));
 
@@ -387,6 +385,12 @@ public class CreateEmployee extends javax.swing.JFrame {
         jPanel9.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
 
         getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 380, 230));
+
+        jTextFieldEmpNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEmpNumActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextFieldEmpNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 60, -1));
 
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
@@ -491,10 +495,10 @@ public class CreateEmployee extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
                 .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addGap(85, 85, 85))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,16 +513,19 @@ public class CreateEmployee extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButtonExitActionPerformed
-
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
       
 
     }//GEN-LAST:event_jButtonSaveActionPerformed
+
+    private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFirstNameActionPerformed
+
+    private void jTextFieldEmpNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmpNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEmpNumActionPerformed
 
     /**
      * @param args the command line arguments
@@ -559,7 +566,6 @@ public class CreateEmployee extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonSave;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboBox1;

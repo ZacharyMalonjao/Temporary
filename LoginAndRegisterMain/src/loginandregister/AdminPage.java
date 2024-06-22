@@ -38,22 +38,19 @@ public class AdminPage extends javax.swing.JFrame {
     EmployeeCSVReader csvReader = new EmployeeCSVReader(csvFile);
     List<String[]> employeeData = csvReader.getEmployeeData();
 
-    String[] columnNames = {"ID", "Last Name", "First Name", "Birthday", "Address", "Phone Number", "SSS #", "Philhealth #", "TIN #", "Pag-ibig #", "Status", "Position", "Immediate Supervisor", "Basic Salary", "Rice Subsidy", "Phone Allowance", "Clothing Allowance", "Gross Semi-monthly Rate", "Hourly Rate"};
+  String[] columnNames = {"ID", "Last Name", "First Name", "Birthday", "Address", "Phone Number", "SSS #", "Philhealth #", "TIN #", "Pag-ibig #", "Status", "Position", "Immediate Supervisor", "Basic Salary", "Rice Subsidy", "Phone Allowance", "Clothing Allowance", "Gross Semi-monthly Rate", "Hourly Rate"};
 
-    DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
-    // Add existing data to the model
-    for (String[] row : employeeData) {
-        model.addRow(row);
-    }
-
-    // Add new data to the model
-//    String[] newRow = {"1234", "John", "Doe", "1990-01-01", "123 Main St", "555-555-5555", "123456789", "987654321", "111-111-1111", "222-222-2222", "Active", "Software Engineer", "Jane Doe", "50000", "1000", "500", "200", "25000", "25.00"};
-//    model.addRow(newRow);
-
-    jTableDataBase.setModel(model);
+// Add existing data to the model
+for (String[] row : employeeData) {
+    model.addRow(row);
 }
- 
+
+
+
+jTableDataBase.setModel(model);
+}
  
  
     /**
@@ -96,7 +93,7 @@ public class AdminPage extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jTextFieldStatus = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,17 +118,17 @@ public class AdminPage extends javax.swing.JFrame {
                 jButtonLogoutActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 20, 80, 30));
+        jPanel2.add(jButtonLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 80, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 70));
 
-        AddEmp.setText("Add Employee");
+        AddEmp.setText("Create Record");
         AddEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(AddEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 550, 120, 30));
+        jPanel1.add(AddEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 150, 30));
 
         jButtonClear.setText("Clear");
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +136,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 550, 120, 30));
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 130, 30));
 
         jButtonCreateRec.setText("Refresh");
         jButtonCreateRec.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +144,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jButtonCreateRecActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCreateRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 650, 150, 30));
+        jPanel1.add(jButtonCreateRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 130, 30));
 
         jButtonEditRec.setText("Edit Record");
         jButtonEditRec.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +152,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jButtonEditRecActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonEditRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 600, 150, 30));
+        jPanel1.add(jButtonEditRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 150, 30));
 
         jButtonDeleteRec.setText("Delete Record");
         jButtonDeleteRec.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +160,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jButtonDeleteRecActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 650, 150, 30));
+        jPanel1.add(jButtonDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, 150, 30));
 
         jTextFieldPosition.setEditable(false);
         jTextFieldPosition.addActionListener(new java.awt.event.ActionListener() {
@@ -171,38 +168,38 @@ public class AdminPage extends javax.swing.JFrame {
                 jTextFieldPositionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 250, 30));
+        jPanel1.add(jTextFieldPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 250, 30));
 
         jTextFieldEmpNum.setEditable(false);
-        jPanel1.add(jTextFieldEmpNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 70, 30));
+        jPanel1.add(jTextFieldEmpNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 70, 30));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Employee Number: ");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Last Name:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, 20));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("First Name:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 20));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Phone No.:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, 20));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Address:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, 20));
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Supervisor:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 70, 20));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 70, 20));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Position:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 50, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 50, 20));
 
         jButtonViewAllEmp.setText("View All Employees");
         jButtonViewAllEmp.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +215,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jTextFieldLastNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 250, 30));
+        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 250, 30));
 
         jTextFieldFirstName.setEditable(false);
         jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +223,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jTextFieldFirstNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 250, 30));
+        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 250, 30));
 
         jTextFieldPhoneNum.setEditable(false);
         jTextFieldPhoneNum.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +231,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jTextFieldPhoneNumActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 250, 30));
+        jPanel1.add(jTextFieldPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 250, 30));
 
         jTextFieldAddress.setEditable(false);
         jTextFieldAddress.addActionListener(new java.awt.event.ActionListener() {
@@ -242,7 +239,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jTextFieldAddressActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 250, 30));
+        jPanel1.add(jTextFieldAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 250, 30));
 
         jTextFieldSupervisor.setEditable(false);
         jTextFieldSupervisor.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +247,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jTextFieldSupervisorActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 250, 30));
+        jPanel1.add(jTextFieldSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 250, 30));
 
         jTableDataBase.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -268,7 +265,7 @@ public class AdminPage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableDataBase);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 870, 600));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 820, 530));
 
         jButtonViewEmp1.setText("View Employee");
         jButtonViewEmp1.addActionListener(new java.awt.event.ActionListener() {
@@ -276,11 +273,11 @@ public class AdminPage extends javax.swing.JFrame {
                 jButtonViewEmp1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonViewEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 600, 120, 30));
+        jPanel1.add(jButtonViewEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 130, 30));
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Status:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 50, 20));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 50, 20));
 
         jTextFieldStatus.setEditable(false);
         jTextFieldStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +285,7 @@ public class AdminPage extends javax.swing.JFrame {
                 jTextFieldStatusActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 250, 30));
+        jPanel1.add(jTextFieldStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 250, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -302,8 +299,9 @@ public class AdminPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -324,10 +322,11 @@ public class AdminPage extends javax.swing.JFrame {
         int selectedRowIndex = jTableDataBase.getSelectedRow();
        if(selectedRowIndex!=-1)
        {
-           UserAccount user = new UserAccount();
-            user.setEmployeeID(jTextFieldEmpNum.getText()); 
+           Employee employee = new Employee();
+           
+            employee.setEmployeeID(jTextFieldEmpNum.getText()); 
             
-          EditEmployee editEmployee = new EditEmployee(user);
+          EditEmployee editEmployee = new EditEmployee(employee);
           editEmployee.setVisible(true);
        }
                
@@ -360,8 +359,8 @@ public class AdminPage extends javax.swing.JFrame {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(jButtonDeleteRec, "Error writing to file: " + e.getMessage());
             }
-          AdminPage admin = new AdminPage();
-          admin.loadEmployeeData("MotorPH.csv");   
+//          AdminPage admin = new AdminPage();
+//          admin.loadEmployeeData("MotorPH.csv");   
           
             JOptionPane.showMessageDialog(jButtonDeleteRec, " Record deleted successfully\n Please refresh to update database");
           
@@ -404,6 +403,7 @@ public class AdminPage extends javax.swing.JFrame {
          jTextFieldPhoneNum.setText("");
          jTextFieldSupervisor.setText("");
          jTextFieldPosition.setText("");
+         jTextFieldStatus.setText("");
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed

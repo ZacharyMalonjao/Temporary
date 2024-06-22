@@ -4,47 +4,78 @@
  */
 package loginandregister;
 
+import com.opencsv.CSVWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
-
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
 /**
  *
  * @author Claire
  */
+
 public class EditEmployee extends javax.swing.JFrame {
     private EmployeeCSVReader reader;
+    String employeeID;
+    String[] employeeData; 
+    private List<String[]>employeeDataBase;
     /**
      * Creates new form EmployeeDisplayInformation
      */
-    public EditEmployee(UserAccount userAcc) {
+    
+    
+    public EditEmployee(Employee employee) {
         initComponents();
         
+        employeeID = employee.getEmployeeID();  
         reader = new EmployeeCSVReader("MotorPH.csv");
-        String employeeID = userAcc.getEmployeeID(); //+
-        String[] employeeData = reader.searchEmployee(employeeID); //call the method search Employee from EmployeeCSVReader
-  
-        //Phone Allowance,Clothing Allowance,Gross Semi-monthly Rate,Hourly Rate
+        employeeData = reader.searchEmployee(employeeID);
+        employeeDataBase = reader.getEmployeeData();
+        
         jTextFieldEmpNum.setText(employeeData[0]);
         jTextFieldFirstName.setText(employeeData[2]);
         jTextFieldLastName.setText(employeeData[1]);
-        jTextFieldAddress.setText(employeeData[3]);
-       // jTextFieldAddress.setText(employeeData[4]);
+        jTextFieldAddress.setText(employeeData[4]);
+        String birthday = employeeData[3];
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+            Date birthdayDate;
+                   try {
+                       birthdayDate = sdf.parse(birthday);
+                   } catch (ParseException e) {
+                       // handle parsing error
+                       JOptionPane.showMessageDialog(this, "Error parsing birthday: " + e.getMessage());
+                       return;
+                   }
+            jCalendarBirthday.setDate(birthdayDate);
+                jCalendarBirthday.repaint();
         jTextFieldPhoneNum.setText(employeeData[5]);
         jTextFieldSSSNum.setText(employeeData[6]);
         jTextFieldPhilHealthNum.setText(employeeData[7]);
         jTextFieldTINNum.setText(employeeData[8]);
-        jTextFieldPagibigNum.setText(employeeData[9]);
-//        jTextFieldStatus.setText(employeeData[10]);
-//        jTextFieldPosition.setText(employeeData[11]);
-//        jTextFieldSupervisor.setText(employeeData[12]);
+        jTextFieldPagibigNum.setText(employeeData[9]);       
+        jComboBoxStatus.setSelectedItem(employeeData[10]);        
+        jComboBoxPosition.setSelectedItem(employeeData[11]);
+        jComboBoxSupervisor.setSelectedItem(employeeData[12]);
         jTextFieldBasicSalary.setText(employeeData[13]);
         jTextFieldRiceSubsidy.setText(employeeData[14]);
         jTextFieldPhoneAllowance.setText(employeeData[15]);
         jTextFieldClothingAllowance.setText(employeeData[16]);
         jTextFieldGrossSemiMonthly.setText(employeeData[17]);
         jTextFieldHourlyRate.setText(employeeData[18]);
-
     }
 
+        
+        
+        
+
+  
+     
+      
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,12 +96,11 @@ public class EditEmployee extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jTextFieldFirstName = new javax.swing.JTextField();
         jTextFieldAddress = new javax.swing.JTextField();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCalendarBirthday = new com.toedter.calendar.JCalendar();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButtonExit = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTextField10 = new javax.swing.JTextField();
@@ -123,8 +153,8 @@ public class EditEmployee extends javax.swing.JFrame {
         jTextField29 = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         jComboBoxPosition = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxStatus = new javax.swing.JComboBox<>();
+        jComboBoxSupervisor = new javax.swing.JComboBox<>();
         jTextFieldEmpNum = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jTextFieldPhilHealthNum = new javax.swing.JTextField();
@@ -154,8 +184,8 @@ public class EditEmployee extends javax.swing.JFrame {
         jTextFieldPagibigNum = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
+        jButtonCancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -188,9 +218,15 @@ public class EditEmployee extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("First Name");
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 20));
+
+        jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFirstNameActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 210, -1));
         jPanel2.add(jTextFieldAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 210, -1));
-        jPanel2.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 110));
+        jPanel2.add(jCalendarBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 110));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 380, 300));
 
@@ -211,16 +247,6 @@ public class EditEmployee extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Payroll System");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
-
-        jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonExit.setForeground(new java.awt.Color(255, 0, 51));
-        jButtonExit.setText("Exit");
-        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExitActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 70));
 
@@ -290,38 +316,38 @@ public class EditEmployee extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Salary Details");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
-        jPanel4.add(jTextFieldPhoneAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 110, -1));
+        jPanel4.add(jTextFieldPhoneAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 110, -1));
 
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Phone Allowance");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 20));
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, 20));
 
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Clothing Allowance");
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 20));
-        jPanel4.add(jTextFieldClothingAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 110, -1));
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 20));
+        jPanel4.add(jTextFieldClothingAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 110, -1));
 
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Rice Subsidy");
-        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 20));
-        jPanel4.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 110, -1));
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 20));
+        jPanel4.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 110, -1));
 
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Hourly Rate");
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, 20));
-        jPanel4.add(jTextFieldHourlyRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 110, -1));
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 20));
+        jPanel4.add(jTextFieldHourlyRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 110, -1));
 
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Gross Semi-Monthly");
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 20));
-        jPanel4.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 110, -1));
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 120, 20));
+        jPanel4.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 110, -1));
 
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Basic Salary");
-        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 20));
-        jPanel4.add(jTextFieldGrossSemiMonthly, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 110, -1));
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 70, 20));
+        jPanel4.add(jTextFieldGrossSemiMonthly, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 110, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 370, 260));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 370, 230));
 
         jPanel9.setBackground(new java.awt.Color(51, 51, 51));
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -405,13 +431,20 @@ public class EditEmployee extends javax.swing.JFrame {
         jComboBoxPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chief Executive Officer", "Chief Operating Officer", "Chief Finance Officer", "Chief Marketing Officer", "Account Manager", "IT Operations and Systems", "HR Manager", "Accounting Head", "Sales & Marketing", "Supply Chain and Logistics", "Customer Service and Relations", "Payroll Manager", "HR Team Leader", "Account Team Leader", "Payroll Team Leader", "Account Rank and File", "Payroll Rank and File", "HR Rank and File" }));
         jPanel9.add(jComboBoxPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 200, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Probationary", " " }));
-        jPanel9.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Probationary", " " }));
+        jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxStatusActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jComboBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Garcia, Manuel III", "Lim, Antonio", "Aquino, Bianca Sofia", "Reyes, Isabella", "Alvaro, Roderick", "Villanueva, Andrea Mae", "Romualdez, Fredrick", "Salcedo, Anthony", "De Leon, Selena", "Mata, Christian", "San, Jose Brad" }));
-        jPanel9.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
+        jComboBoxSupervisor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Garcia Manuel III", "Lim Antonio", "Aquino Bianca Sofia", "Reyes Isabella", "Alvaro Roderick", "Villanueva Andrea Mae", "Romualdez Fredrick", "Salcedo Anthony", "De Leon Selena", "Mata Christian", "San Jose Brad" }));
+        jPanel9.add(jComboBoxSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
 
-        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 380, 230));
+        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 380, 200));
+
+        jTextFieldEmpNum.setEditable(false);
         getContentPane().add(jTextFieldEmpNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 60, -1));
 
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
@@ -512,37 +545,199 @@ public class EditEmployee extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancel.setText("Cancel");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancel)
+                    .addComponent(jButtonSave))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 370, 60));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 370, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButtonExitActionPerformed
-
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        // TODO add your handling code here:
+ if (jTextFieldFirstName.getText().trim().isEmpty() || 
+    jTextFieldLastName.getText().trim().isEmpty() ||
+    jTextFieldAddress.getText().trim().isEmpty() ||
+    jTextFieldPhoneNum.getText().trim().isEmpty() ||
+    jTextFieldSSSNum.getText().trim().isEmpty() ||
+    jTextFieldPhilHealthNum.getText().trim().isEmpty() ||
+    jTextFieldTINNum.getText().trim().isEmpty() ||
+    jTextFieldPagibigNum.getText().trim().isEmpty() ||
+    jTextFieldBasicSalary.getText().trim().isEmpty() ||
+    jTextFieldRiceSubsidy.getText().trim().isEmpty() ||
+    jTextFieldPhoneAllowance.getText().trim().isEmpty() ||
+    jTextFieldClothingAllowance.getText().trim().isEmpty() ||
+    jTextFieldGrossSemiMonthly.getText().trim().isEmpty() ||
+    jTextFieldHourlyRate.getText().trim().isEmpty()) {
+    JOptionPane.showMessageDialog(jButtonSave, "Please fill in all fields");
+} else {
+    Validator validator = new Validator();
+    boolean isValid = true;
+    
+    if(!validator.isValidString(jTextFieldLastName.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Last Name");
+        return;
+    } else {
+        employeeData[1] = jTextFieldLastName.getText();
+    }
+    
+    if(!validator.isValidString(jTextFieldFirstName.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid First Name");
+        return;
+    } else {
+        employeeData[2] = jTextFieldFirstName.getText();
+    }
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    String birthday = sdf.format(jCalendarBirthday.getDate());
+    employeeData[3] = birthday;
+    
+    
+    if(!validator.isValidAddress(jTextFieldAddress.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please exclude using commas in Address");
+        return;
+    } else {
+        employeeData[4] = jTextFieldAddress.getText();
+    }
+    
+    
+    if(!validator.isValidPhoneNumber(jTextFieldPhoneNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Phone Number (xxx-xxx-xxx)");
+        return;
+    } else {
+        employeeData[5] = jTextFieldPhoneNum.getText();
+    }
+    
+    if(!validator.isValidSssNumber(jTextFieldSSSNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format SSS as xx-xxxxxxx-x");
+        return;
+    } else {
+        employeeData[6] = jTextFieldSSSNum.getText();
+    }
+    
+    if(!validator.isValidPhilhealthNumber(jTextFieldPhilHealthNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format PhilHealth as xxxxxxxxxxxx (12 digits)");
+        return;
+    } else {
+        employeeData[7] = jTextFieldPhilHealthNum.getText();
+    }
+    
+    if(!validator.isValidTin(jTextFieldTINNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format TIN as xxx-xxx-xxx-xxx");
+        return;
+    } else {
+        employeeData[8] = jTextFieldTINNum.getText();
+    }
+    
+    if(!validator.isValidPagibigNumber(jTextFieldPagibigNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format Pagibig as xxxxxxxxxxxx (12 digits)");
+        return;
+    } else {
+        employeeData[9] = jTextFieldPagibigNum.getText();
+    }
+    
+    employeeData[10] = (String) jComboBoxStatus.getSelectedItem();
+    employeeData[11] = (String) jComboBoxPosition.getSelectedItem();
+    employeeData[12] = (String) jComboBoxSupervisor.getSelectedItem();
+    
+    if(!validator.isValidNumber(jTextFieldBasicSalary.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Basic Salary");
+        return;
+    } else {
+        employeeData[13] = jTextFieldBasicSalary.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldRiceSubsidy.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Rice Subsidy");
+        return;
+    } else {
+        employeeData[14] = jTextFieldRiceSubsidy.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldPhoneAllowance.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Phone Allowance");
+        return;
+    } else {
+        employeeData[15] = jTextFieldPhoneAllowance.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldClothingAllowance.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Clothing Allowance");
+        return;
+    } else {
+        employeeData[16] = jTextFieldClothingAllowance.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldGrossSemiMonthly.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Gross Semi Monthly");
+        return;
+    } else {
+        employeeData[17] = jTextFieldGrossSemiMonthly.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldHourlyRate.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Hourly Rate");
+        return;
+    } else {
+        employeeData[18] = jTextFieldHourlyRate.getText();
+    }
 
+  
+if ( isValid) {
+    JOptionPane.showMessageDialog(jButtonSave, "Updated Successfully\n Please click the refresh Button to view changes ");
+    this.setVisible(false);
+    //    AdminPage admin = new AdminPage();
+    //    admin.loadEmployeeData("MotorPH.csv");
+
+    try {
+        CSVWriter writer = new CSVWriter(new FileWriter("MotorPH.csv"), ',', CSVWriter.NO_QUOTE_CHARACTER);
+
+        for (String[] updatedRecord : employeeDataBase) {
+            writer.writeNext(updatedRecord);
+        }
+        writer.close();
+    } catch (IOException e) {
+        // ignore exception for now
+    }
+}}
     }//GEN-LAST:event_jButtonSaveActionPerformed
+
+    private void jComboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxStatusActionPerformed
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCancelActionPerformed
+
+    private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFirstNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -583,12 +778,12 @@ public class EditEmployee extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonSave;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private com.toedter.calendar.JCalendar jCalendarBirthday;
     private javax.swing.JComboBox<String> jComboBoxPosition;
+    private javax.swing.JComboBox<String> jComboBoxStatus;
+    private javax.swing.JComboBox<String> jComboBoxSupervisor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

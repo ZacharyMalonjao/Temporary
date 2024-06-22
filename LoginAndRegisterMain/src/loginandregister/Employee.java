@@ -6,7 +6,7 @@ package loginandregister;
  * @author Claire
  */
 public class Employee {
-        private String employeeNumber;
+        private String employeeID;
         private String firstName;
         private String lastName;
         private String birthDay;
@@ -29,8 +29,8 @@ public class Employee {
     public Employee() {
     }
 
-    public String getEmployeeNumber() {
-        return employeeNumber;
+    public String getEmployeeID() {
+        return employeeID;
     }
 
     public String getFirstName() {
@@ -104,8 +104,8 @@ public class Employee {
         return grossSemiMonthly;
     }
      
-    public void setEmployeeNumber(String employeeNumber) {
-        this.employeeNumber = employeeNumber;
+    public void setEmployeeID(String employeeNumber) {
+        this.employeeID = employeeNumber;
     }
 
     public void setFirstName(String firstName) {

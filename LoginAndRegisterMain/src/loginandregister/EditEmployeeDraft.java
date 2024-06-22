@@ -49,7 +49,7 @@ public class EditEmployeeDraft extends javax.swing.JFrame {
         return false; 
     }
 }
-       
+    //dear future djanh, use this for    
      private boolean isValidInteger(String value) {
         try {
             Integer.parseInt(value);
@@ -58,22 +58,22 @@ public class EditEmployeeDraft extends javax.swing.JFrame {
             return false;
         }
     } 
- //Philhealth    
-     private boolean isValidPhilhealthNumber(String value) {
+   
+    public boolean isValidPhilhealthNumber(String value) {
         String pattern = "^\\d{12}$";
         return value.matches(pattern);
-}
-   //phonenumber  
+} 
+   
      private boolean isValidPhoneNumber(String phoneNumber) {
         String pattern = "^\\d{3}-\\d{3}-\\d{3}$";
         return phoneNumber.matches(pattern);
 }
-     //sss
+     
      private boolean isValidSssNumber(String value){
         String pattern = "^\\d{2}-\\d{7}-\\d{1}$";  
         return value.matches(pattern);
      }
-     //tin
+    
      private boolean isValidTin(String value){
          String pattern = "^\\d{3}-\\d{3}-\\d{3}-\\d{3}$";
          return value.matches(pattern);

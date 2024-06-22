@@ -221,6 +221,8 @@ public class ViewEmployee extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Immediate Supervisor :");
         jPanel19.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 130, 20));
+
+        jTextFieldBirthDay.setEditable(false);
         jPanel19.add(jTextFieldBirthDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 140, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -369,7 +371,7 @@ public class ViewEmployee extends javax.swing.JFrame {
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         // temporary
         this.setVisible(false);
-        new HomePage().setVisible(true);
+        new AdminPage().setVisible(true);
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     /**
