@@ -292,35 +292,35 @@ public class CreateEmployee extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Salary Details");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
-        jPanel4.add(jTextFieldPhoneAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 110, -1));
+        jPanel4.add(jTextFieldPhoneAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 110, -1));
 
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Phone Allowance");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 20));
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 20));
 
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Clothing Allowance");
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 20));
-        jPanel4.add(jTextFieldClothingAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 110, -1));
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, 20));
+        jPanel4.add(jTextFieldClothingAllowance, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 110, -1));
 
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Rice Subsidy");
-        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 20));
-        jPanel4.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 110, -1));
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 20));
+        jPanel4.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 110, -1));
 
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Hourly Rate");
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, 20));
-        jPanel4.add(jTextFieldHourlyRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 110, -1));
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, 20));
+        jPanel4.add(jTextFieldHourlyRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 110, -1));
 
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Gross Semi-Monthly");
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 20));
-        jPanel4.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 110, -1));
+        jPanel4.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 110, -1));
 
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Basic Salary");
-        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 20));
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 70, 20));
         jPanel4.add(jTextFieldGrossSemiMonthly, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 110, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 370, 260));
@@ -431,7 +431,7 @@ public class CreateEmployee extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
         jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel13.add(jTextFieldPhilHealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 160, -1));
+        jPanel13.add(jTextFieldPhilHealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 160, -1));
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
@@ -440,7 +440,7 @@ public class CreateEmployee extends javax.swing.JFrame {
 
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
         jLabel46.setText("PhilHealth");
-        jPanel13.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 100, 20));
+        jPanel13.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 100, 20));
 
         jPanel14.setBackground(new java.awt.Color(51, 51, 51));
         jPanel14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -465,8 +465,8 @@ public class CreateEmployee extends javax.swing.JFrame {
 
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setText("TIN Number");
-        jPanel13.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 70, 20));
-        jPanel13.add(jTextFieldTINNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 160, -1));
+        jPanel13.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 70, 20));
+        jPanel13.add(jTextFieldTINNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 160, -1));
 
         jPanel15.setBackground(new java.awt.Color(51, 51, 51));
         jPanel15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -509,11 +509,11 @@ public class CreateEmployee extends javax.swing.JFrame {
         jPanel15.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 160, -1));
 
         jPanel13.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 370, 200));
-        jPanel13.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 160, -1));
+        jPanel13.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 160, -1));
 
         jLabel58.setForeground(new java.awt.Color(255, 255, 255));
         jLabel58.setText("Pag-IBIG Number");
-        jPanel13.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 100, 20));
+        jPanel13.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 100, 20));
 
         getContentPane().add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 370, 210));
 

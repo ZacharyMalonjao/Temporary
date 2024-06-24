@@ -347,7 +347,7 @@ public class EditEmployee extends javax.swing.JFrame {
         jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 70, 20));
         jPanel4.add(jTextFieldGrossSemiMonthly, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 110, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 370, 230));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 370, 230));
 
         jPanel9.setBackground(new java.awt.Color(51, 51, 51));
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -376,11 +376,11 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Position");
-        jPanel9.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 70, 20));
+        jPanel9.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 70, 20));
 
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("Status");
-        jPanel9.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, 20));
+        jPanel9.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 20));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
         jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -426,10 +426,10 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("Supervisor");
-        jPanel9.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 100, 20));
+        jPanel9.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 100, 20));
 
         jComboBoxPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chief Executive Officer", "Chief Operating Officer", "Chief Finance Officer", "Chief Marketing Officer", "Account Manager", "IT Operations and Systems", "HR Manager", "Accounting Head", "Sales & Marketing", "Supply Chain and Logistics", "Customer Service and Relations", "Payroll Manager", "HR Team Leader", "Account Team Leader", "Payroll Team Leader", "Account Rank and File", "Payroll Rank and File", "HR Rank and File" }));
-        jPanel9.add(jComboBoxPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 200, -1));
+        jPanel9.add(jComboBoxPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 200, -1));
 
         jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Probationary", " " }));
         jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -437,12 +437,12 @@ public class EditEmployee extends javax.swing.JFrame {
                 jComboBoxStatusActionPerformed(evt);
             }
         });
-        jPanel9.add(jComboBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
+        jPanel9.add(jComboBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, -1));
 
         jComboBoxSupervisor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Garcia Manuel III", "Lim Antonio", "Aquino Bianca Sofia", "Reyes Isabella", "Alvaro Roderick", "Villanueva Andrea Mae", "Romualdez Fredrick", "Salcedo Anthony", "De Leon Selena", "Mata Christian", "San Jose Brad" }));
-        jPanel9.add(jComboBoxSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
+        jPanel9.add(jComboBoxSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 200, -1));
 
-        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 380, 200));
+        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 380, 170));
 
         jTextFieldEmpNum.setEditable(false);
         getContentPane().add(jTextFieldEmpNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 60, -1));
@@ -450,7 +450,7 @@ public class EditEmployee extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
         jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel13.add(jTextFieldPhilHealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 160, -1));
+        jPanel13.add(jTextFieldPhilHealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 160, -1));
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
@@ -459,7 +459,7 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
         jLabel46.setText("PhilHealth");
-        jPanel13.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 100, 20));
+        jPanel13.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 100, 20));
 
         jPanel14.setBackground(new java.awt.Color(51, 51, 51));
         jPanel14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -484,8 +484,14 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setText("TIN Number");
-        jPanel13.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 70, 20));
-        jPanel13.add(jTextFieldTINNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 160, -1));
+        jPanel13.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, 20));
+
+        jTextFieldTINNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTINNumActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jTextFieldTINNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 160, -1));
 
         jPanel15.setBackground(new java.awt.Color(51, 51, 51));
         jPanel15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -531,10 +537,10 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("Pag-IBIG Number");
-        jPanel13.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 100, 20));
-        jPanel13.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 160, -1));
+        jPanel13.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 100, 40));
+        jPanel13.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 160, -1));
 
-        getContentPane().add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 370, 210));
+        getContentPane().add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 370, 180));
 
         jPanel6.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -573,7 +579,7 @@ public class EditEmployee extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 370, 50));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, 370, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -738,6 +744,10 @@ if ( isValid) {
     private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFirstNameActionPerformed
+
+    private void jTextFieldTINNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTINNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTINNumActionPerformed
 
     /**
      * @param args the command line arguments

@@ -403,7 +403,12 @@ jTableDataBase.setModel(model);
     }//GEN-LAST:event_jTextFieldSupervisorActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-         jTextFieldEmpNum.setText("");
+        jButtonDeleteRec.setEnabled(false);
+        jButtonEditRec.setEnabled(false);
+        jButtonViewEmp1.setEnabled(false);
+        
+        
+        jTextFieldEmpNum.setText("");
          jTextFieldLastName.setText("");
          jTextFieldFirstName.setText("");
          jTextFieldAddress.setText("");
