@@ -432,6 +432,11 @@ jTableDataBase.setModel(model);
          jTextFieldSupervisor.setText(model.getValueAt(SelectedRowIndex, 12).toString());
          jTextFieldPosition.setText(model.getValueAt(SelectedRowIndex, 11).toString());
          jTextFieldStatus.setText(model.getValueAt(SelectedRowIndex, 10).toString());
+         
+         jButtonDeleteRec.setEnabled(true);
+         jButtonEditRec.setEnabled(true);
+         jButtonClear.setEnabled(true);
+         jButtonViewEmp1.setEnabled(true);
     }//GEN-LAST:event_jTableDataBaseMouseClicked
 
     private void jButtonViewEmp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewEmp1ActionPerformed
@@ -457,11 +462,10 @@ user.setEmployeeID(jTextFieldEmpNum.getText());
     private void onViewAllEmployeesClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onViewAllEmployeesClick
         // TODO add your handling code here:
         jButtonCreateRec.setEnabled(true);
-        jButtonDeleteRec.setEnabled(true);
-        jButtonEditRec.setEnabled(true);
-        jButtonClear.setEnabled(true);
+        
+
         jButtonRefresh.setEnabled(true);
-        jButtonViewEmp1.setEnabled(true);
+        
     }//GEN-LAST:event_onViewAllEmployeesClick
 
     /**
