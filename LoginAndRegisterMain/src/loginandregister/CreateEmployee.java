@@ -4,8 +4,13 @@
  */
 package loginandregister;
 
+import java.util.List;
 import javax.swing.JOptionPane;
-
+import java.text.SimpleDateFormat;
+import com.opencsv.CSVWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 /**
  *
  * @author Claire
@@ -15,13 +20,36 @@ public class CreateEmployee extends javax.swing.JFrame {
     /**
      * Creates new form EmployeeDisplayInformation
      */
+    
+    
+    String employeeID;
+    
+    private List<String[]>employeeDataBase;
+    
+    
     public CreateEmployee() {
         initComponents();
         
+         reader = new EmployeeCSVReader("MotorPH.csv");
+         employeeDataBase = reader.getEmployeeData();
+         
+                int lastIndex = -1;
+         for (int i = 0; i < employeeDataBase.size(); i++) {
+                lastIndex = i;
+            }
+        int newIndex = lastIndex + 1;
+        
+        jTextFieldEmpNum.setText(String.valueOf(newIndex));
+       
+         
+        
+                 
        //Dear future Djanh, magandang practice raw na yung employee number is auto-generated, acc. kay sir
           //specifically kukunin yung last employee id ng csv tas plus one
           //also do me a favor and use the address validation sa Validator class
               //message me for further details
+              
+              
     }
 
     /**
@@ -44,7 +72,7 @@ public class CreateEmployee extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTextFieldFirstName = new javax.swing.JTextField();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCalendarBirthday = new com.toedter.calendar.JCalendar();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -101,8 +129,8 @@ public class CreateEmployee extends javax.swing.JFrame {
         jTextField29 = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         jComboBoxPosition = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxStatus = new javax.swing.JComboBox<>();
+        jComboBoxSupervisor = new javax.swing.JComboBox<>();
         jTextFieldEmpNum = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jTextFieldPhilHealthNum = new javax.swing.JTextField();
@@ -132,6 +160,7 @@ public class CreateEmployee extends javax.swing.JFrame {
         jLabel58 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
+        jButtonCancel = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -173,7 +202,7 @@ public class CreateEmployee extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 210, -1));
-        jPanel2.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 110));
+        jPanel2.add(jCalendarBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 110));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 380, 300));
 
@@ -376,16 +405,22 @@ public class CreateEmployee extends javax.swing.JFrame {
         jPanel9.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 100, 20));
 
         jComboBoxPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chief Executive Officer", "Chief Operating Officer", "Chief Finance Officer", "Chief Marketing Officer", "Account Manager", "IT Operations and Systems", "HR Manager", "Accounting Head", "Sales & Marketing", "Supply Chain and Logistics", "Customer Service and Relations", "Payroll Manager", "HR Team Leader", "Account Team Leader", "Payroll Team Leader", "Account Rank and File", "Payroll Rank and File", "HR Rank and File" }));
+        jComboBoxPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPositionActionPerformed(evt);
+            }
+        });
         jPanel9.add(jComboBoxPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 200, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Probationary", " " }));
-        jPanel9.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Probationary", " " }));
+        jPanel9.add(jComboBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Garcia, Manuel III", "Lim, Antonio", "Aquino, Bianca Sofia", "Reyes, Isabella", "Alvaro, Roderick", "Villanueva, Andrea Mae", "Romualdez, Fredrick", "Salcedo, Anthony", "De Leon, Selena", "Mata, Christian", "San, Jose Brad" }));
-        jPanel9.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
+        jComboBoxSupervisor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Garcia, Manuel III", "Lim, Antonio", "Aquino, Bianca Sofia", "Reyes, Isabella", "Alvaro, Roderick", "Villanueva, Andrea Mae", "Romualdez, Fredrick", "Salcedo, Anthony", "De Leon, Selena", "Mata, Christian", "San, Jose Brad" }));
+        jPanel9.add(jComboBoxSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
 
         getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 380, 230));
 
+        jTextFieldEmpNum.setEditable(false);
         jTextFieldEmpNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmpNumActionPerformed(evt);
@@ -491,21 +526,32 @@ public class CreateEmployee extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancel.setText("Cancel");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
-                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSave)
+                    .addComponent(jButtonCancel))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 370, 60));
@@ -515,8 +561,175 @@ public class CreateEmployee extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-      
 
+    boolean isValid = true;
+    
+    String[] newRow = new String[19];     
+    
+        if (jTextFieldFirstName.getText().trim().isEmpty() || 
+    jTextFieldLastName.getText().trim().isEmpty() ||
+    jTextFieldAddress.getText().trim().isEmpty() ||
+    jTextFieldPhoneNum.getText().trim().isEmpty() ||
+    jTextFieldSSSNum.getText().trim().isEmpty() ||
+    jTextFieldPhilHealthNum.getText().trim().isEmpty() ||
+    jTextFieldTINNum.getText().trim().isEmpty() ||
+    jTextFieldPagibigNum.getText().trim().isEmpty() ||
+    jTextFieldBasicSalary.getText().trim().isEmpty() ||
+    jTextFieldRiceSubsidy.getText().trim().isEmpty() ||
+    jTextFieldPhoneAllowance.getText().trim().isEmpty() ||
+    jTextFieldClothingAllowance.getText().trim().isEmpty() ||
+    jTextFieldGrossSemiMonthly.getText().trim().isEmpty() ||
+    jTextFieldHourlyRate.getText().trim().isEmpty()) {
+            
+    JOptionPane.showMessageDialog(jButtonSave, "Please fill in all fields");
+      return;
+} else {
+    Validator validator = new Validator();
+
+       
+      newRow[0] = jTextFieldEmpNum.getText();
+    
+    if(!validator.isValidString(jTextFieldLastName.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Last Name");
+         isValid = false;
+         return;
+    } else {
+        newRow[1] = jTextFieldLastName.getText();
+    }
+    
+    if(!validator.isValidString(jTextFieldFirstName.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid First Name");
+         isValid = false;
+         return;
+    } else {
+        newRow[2] = jTextFieldFirstName.getText();
+    }
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    String birthday = sdf.format(jCalendarBirthday.getDate());
+    newRow[3] = birthday;
+    
+    
+    if(!validator.isValidAddress(jTextFieldAddress.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please exclude using commas in Address");
+         isValid = false;
+         return;
+    } else {
+        newRow[4] = jTextFieldAddress.getText();
+    }
+    
+    
+    if(!validator.isValidPhoneNumber(jTextFieldPhoneNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Phone Number (xxx-xxx-xxx)");
+        isValid = false;
+        return;
+    } else {
+        newRow[5] = jTextFieldPhoneNum.getText();
+    }
+    
+    if(!validator.isValidSssNumber(jTextFieldSSSNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format SSS as xx-xxxxxxx-x");
+         isValid = false;
+         return;
+    } else {
+        newRow[6] = jTextFieldSSSNum.getText();
+    }
+    
+    if(!validator.isValidPhilhealthNumber(jTextFieldPhilHealthNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format PhilHealth as xxxxxxxxxxxx (12 digits)");
+         isValid = false;
+         return;
+    } else {
+        newRow[7] = jTextFieldPhilHealthNum.getText();
+    }
+    
+    if(!validator.isValidTin(jTextFieldTINNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format TIN as xxx-xxx-xxx-xxx");
+         isValid = false;
+         return;
+    } else {
+        newRow[8] = jTextFieldTINNum.getText();
+    }
+    
+    if(!validator.isValidPagibigNumber(jTextFieldPagibigNum.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please format Pagibig as xxxxxxxxxxxx (12 digits)");
+         isValid = false;
+         return;
+    } else {
+        newRow[9] = jTextFieldPagibigNum.getText();
+    }
+    
+    newRow[10] = (String) jComboBoxStatus.getSelectedItem();
+    newRow[11] = (String) jComboBoxPosition.getSelectedItem();
+    newRow[12] = (String) jComboBoxSupervisor.getSelectedItem();
+    
+    if(!validator.isValidNumber(jTextFieldBasicSalary.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Basic Salary");
+         isValid = false;
+         return;
+    } else {
+        newRow[13] = jTextFieldBasicSalary.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldRiceSubsidy.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Rice Subsidy");
+         isValid = false;
+         return;
+    } else {
+        newRow[14] = jTextFieldRiceSubsidy.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldPhoneAllowance.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Phone Allowance");
+         isValid = false;
+         return;
+    } else {
+        newRow[15] = jTextFieldPhoneAllowance.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldClothingAllowance.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Clothing Allowance");
+         isValid = false;
+         return;
+    } else {
+        newRow[16] = jTextFieldClothingAllowance.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldGrossSemiMonthly.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Gross Semi Monthly");
+         isValid = false;
+         return;
+    } else {
+        newRow[17] = jTextFieldGrossSemiMonthly.getText();
+    }
+    
+    if(!validator.isValidNumber(jTextFieldHourlyRate.getText())){ 
+        JOptionPane.showMessageDialog(jButtonSave, "Please input valid Hourly Rate");
+         isValid = false;
+         return;
+    } else {
+        newRow[18] = jTextFieldHourlyRate.getText();
+    }
+        }
+        
+        
+        if (isValid) {
+            employeeDataBase.add(newRow);
+            try {
+                CSVWriter writer = new CSVWriter(new FileWriter("MotorPH.csv"), ',', CSVWriter.NO_QUOTE_CHARACTER);
+
+                for (String[] updatedRecord : employeeDataBase) {
+                    writer.writeNext(updatedRecord);
+                }
+                writer.close();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(jButtonSave, "Error writing to file: " + e.getMessage());
+            }
+            JOptionPane.showMessageDialog(jButtonSave, "Updated Successfully\n Please click the refresh Button to view changes ");
+            this.setVisible(false);
+        } else {
+            // do nothing, or display an error message if you want
+        }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
@@ -526,6 +739,15 @@ public class CreateEmployee extends javax.swing.JFrame {
     private void jTextFieldEmpNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmpNumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEmpNumActionPerformed
+
+    private void jComboBoxPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPositionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPositionActionPerformed
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -566,11 +788,12 @@ public class CreateEmployee extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonSave;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private com.toedter.calendar.JCalendar jCalendarBirthday;
     private javax.swing.JComboBox<String> jComboBoxPosition;
+    private javax.swing.JComboBox<String> jComboBoxStatus;
+    private javax.swing.JComboBox<String> jComboBoxSupervisor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

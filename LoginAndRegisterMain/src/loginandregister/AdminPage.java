@@ -67,9 +67,9 @@ jTableDataBase.setModel(model);
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButtonLogout = new javax.swing.JButton();
-        AddEmp = new javax.swing.JButton();
-        jButtonClear = new javax.swing.JButton();
         jButtonCreateRec = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
+        jButtonRefresh = new javax.swing.JButton();
         jButtonEditRec = new javax.swing.JButton();
         jButtonDeleteRec = new javax.swing.JButton();
         jTextFieldPosition = new javax.swing.JTextField();
@@ -122,15 +122,17 @@ jTableDataBase.setModel(model);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 70));
 
-        AddEmp.setText("Create Record");
-        AddEmp.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCreateRec.setText("Create Record");
+        jButtonCreateRec.setEnabled(false);
+        jButtonCreateRec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddEmpActionPerformed(evt);
+                jButtonCreateRecActionPerformed(evt);
             }
         });
-        jPanel1.add(AddEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 150, 30));
+        jPanel1.add(jButtonCreateRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 150, 30));
 
         jButtonClear.setText("Clear");
+        jButtonClear.setEnabled(false);
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
@@ -138,15 +140,17 @@ jTableDataBase.setModel(model);
         });
         jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 130, 30));
 
-        jButtonCreateRec.setText("Refresh");
-        jButtonCreateRec.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRefresh.setText("Refresh");
+        jButtonRefresh.setEnabled(false);
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCreateRecActionPerformed(evt);
+                jButtonRefreshActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCreateRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 130, 30));
+        jPanel1.add(jButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 130, 30));
 
         jButtonEditRec.setText("Edit Record");
+        jButtonEditRec.setEnabled(false);
         jButtonEditRec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditRecActionPerformed(evt);
@@ -155,6 +159,7 @@ jTableDataBase.setModel(model);
         jPanel1.add(jButtonEditRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 150, 30));
 
         jButtonDeleteRec.setText("Delete Record");
+        jButtonDeleteRec.setEnabled(false);
         jButtonDeleteRec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteRecActionPerformed(evt);
@@ -205,6 +210,7 @@ jTableDataBase.setModel(model);
         jButtonViewAllEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonViewAllEmpActionPerformed(evt);
+                onViewAllEmployeesClick(evt);
             }
         });
         jPanel1.add(jButtonViewAllEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 220, 30));
@@ -268,6 +274,7 @@ jTableDataBase.setModel(model);
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 820, 530));
 
         jButtonViewEmp1.setText("View Employee");
+        jButtonViewEmp1.setEnabled(false);
         jButtonViewEmp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonViewEmp1ActionPerformed(evt);
@@ -307,12 +314,12 @@ jTableDataBase.setModel(model);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AddEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmpActionPerformed
+    private void jButtonCreateRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateRecActionPerformed
      CreateEmployee createEmployee = new CreateEmployee();
      createEmployee.setVisible(true);
 
 
-    }//GEN-LAST:event_AddEmpActionPerformed
+    }//GEN-LAST:event_jButtonCreateRecActionPerformed
 
     private void jButtonEditRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditRecActionPerformed
         // TODO add your handling code here:
@@ -442,10 +449,20 @@ user.setEmployeeID(jTextFieldEmpNum.getText());
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldStatusActionPerformed
 
-    private void jButtonCreateRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateRecActionPerformed
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
         // TODO add your handling code here:
        loadEmployeeData("MotorPH.csv");
-    }//GEN-LAST:event_jButtonCreateRecActionPerformed
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
+
+    private void onViewAllEmployeesClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onViewAllEmployeesClick
+        // TODO add your handling code here:
+        jButtonCreateRec.setEnabled(true);
+        jButtonDeleteRec.setEnabled(true);
+        jButtonEditRec.setEnabled(true);
+        jButtonClear.setEnabled(true);
+        jButtonRefresh.setEnabled(true);
+        jButtonViewEmp1.setEnabled(true);
+    }//GEN-LAST:event_onViewAllEmployeesClick
 
     /**
      * @param args the command line arguments
@@ -483,12 +500,12 @@ user.setEmployeeID(jTextFieldEmpNum.getText());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddEmp;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonCreateRec;
     private javax.swing.JButton jButtonDeleteRec;
     private javax.swing.JButton jButtonEditRec;
     private javax.swing.JButton jButtonLogout;
+    private javax.swing.JButton jButtonRefresh;
     private javax.swing.JButton jButtonViewAllEmp;
     private javax.swing.JButton jButtonViewEmp1;
     private javax.swing.JLabel jLabel1;
